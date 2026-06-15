@@ -1,0 +1,20 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#050B1D"/>
+  <rect x="70" y="70" width="1460" height="760" rx="28" fill="url(#bg)"/>
+  <rect x="130" y="140" width="1340" height="620" rx="22" fill="#0A132E" stroke="#1EA7FF" stroke-opacity="0.25"/>
+  <rect x="130" y="140" width="1340" height="74" rx="22" fill="#091126"/>
+  <circle cx="176" cy="177" r="10" fill="#FB7185"/>
+  <circle cx="208" cy="177" r="10" fill="#FBBF24"/>
+  <circle cx="240" cy="177" r="10" fill="#34D399"/>
+  <text x="1300" y="186" fill="#A3B5D8" font-size="30" font-family="Arial, sans-serif" letter-spacing="5">WEBFLOW.COM</text>
+  <text x="190" y="370" fill="#F8FAFC" font-size="86" font-weight="700" font-family="Arial, sans-serif">Creative Agency Showcase</text>
+  <text x="190" y="445" fill="#B4C2E0" font-size="42" font-family="Arial, sans-serif">Premium storytelling website concept</text>
+  <rect x="190" y="530" width="440" height="74" rx="37" fill="#17D3A6" fill-opacity="0.2" stroke="#2BE3B8"/>
+  <text x="255" y="579" fill="#D7FFF3" font-size="34" font-family="Arial, sans-serif">Agency Website</text>
+  <defs>
+    <linearGradient id="bg" x1="70" y1="70" x2="1530" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1735"/>
+      <stop offset="1" stop-color="#06102A"/>
+    </linearGradient>
+  </defs>
+</svg>
