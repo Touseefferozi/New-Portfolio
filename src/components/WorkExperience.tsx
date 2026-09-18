@@ -70,9 +70,9 @@ function ExperienceColumn({ items }: { items: ExperienceItem[] }) {
 
 export default function WorkExperience() {
   return (
-    <section id="experience" data-scroll-section className="site-container section-space">
-      <div data-scroll /* data-scroll-speed="0.45" */ className="rounded-3xl border border-white/10 bg-slate-950/55 p-6 backdrop-blur sm:rounded-4xl sm:p-8 lg:p-12">
-        <div data-scroll /* data-scroll-speed="0.75" */ className="mx-auto max-w-3xl text-center">
+    <section id="experience" className="site-container section-space">
+      <div className="rounded-3xl border border-white/10 bg-slate-950/55 p-6 backdrop-blur sm:rounded-4xl sm:p-8 lg:p-12">
+        <div className="mx-auto max-w-3xl text-center">
           <h2 className="section-heading font-black text-white">Work Experience</h2>
           <p className="mt-5 text-lg leading-8 text-slate-400 sm:text-xl sm:leading-9">
             Worked on scalable web solutions from development to deployment.

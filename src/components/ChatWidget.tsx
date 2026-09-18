@@ -24,11 +24,11 @@ const WHATSAPP_LINK = "https://wa.me/923453360450";
 const INITIAL_MESSAGE: ChatMessage = {
   id: "welcome",
   role: "bot",
-  text: "Hey 👋 Welcome to The DevSpark — kya aap apna next project plan kar rahe hain?",
+  text: "Hey 👋 I'm your AI assistant — ask about AI chatbots, automation, or starting your next digital project.",
   actions: [
-    { label: "View Services", query: "What services do you offer?" },
+    { label: "AI Chatbots", query: "Do you build AI chatbots?" },
+    { label: "AI Projects", href: "/#ai" },
     { label: "Start a Project", href: "/contact" },
-    { label: "See Portfolio", href: "/portfolio" },
   ],
 };
 
@@ -67,9 +67,21 @@ function getBotReply(rawQuestion: string): Omit<ChatMessage, "id" | "role"> {
 
   if (/service|offer|what do you do|web|website|ui|ux|saas|app|performance/.test(question)) {
     return {
-      text: "Our core services: Website Development, Web Apps / SaaS, UI/UX Design, and Performance Optimization — built to help startups and businesses grow digitally.",
+      text: "Core services: AI Chatbots, AI Automation, Website Development, SaaS / Web Apps, and Product UI — built to help businesses grow with smart digital systems.",
       actions: [
+        { label: "AI Solutions", href: "/#ai" },
         { label: "Start a Project", href: "/contact" },
+        { label: "WhatsApp", href: WHATSAPP_LINK, external: true },
+      ],
+    };
+  }
+
+  if (/chatbot|chat bot|ai bot|assistant|automation|openai|llm|gpt|ai/.test(question)) {
+    return {
+      text: "Yes — I build AI chatbots and automation systems for websites, lead capture, enrollment flows, tutoring, and customer support. Want a custom bot for your business?",
+      actions: [
+        { label: "See AI Projects", href: "/#ai" },
+        { label: "Build My Bot", href: "/contact" },
         { label: "WhatsApp", href: WHATSAPP_LINK, external: true },
       ],
     };
@@ -181,6 +193,12 @@ export default function ChatWidget() {
     scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
   }, [messages, isTyping]);
 
+  useEffect(() => {
+    const openChat = () => setIsOpen(true);
+    window.addEventListener("open-chat-widget", openChat);
+    return () => window.removeEventListener("open-chat-widget", openChat);
+  }, []);
+
   const pushBotMessage = (question: string) => {
     setIsTyping(true);
 
@@ -229,23 +247,36 @@ export default function ChatWidget() {
       }
 
       setIsOpen(false);
+
+      if (action.href.includes("#")) {
+        const [path, hash] = action.href.split("#");
+        if (!path || path === "/" || path === window.location.pathname) {
+          const el = document.getElementById(hash);
+          if (el) {
+            const top = el.getBoundingClientRect().top + window.scrollY - 96;
+            window.scrollTo({ top, behavior: "smooth" });
+            return;
+          }
+        }
+      }
+
       startTransition(action.href);
     }
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-120 sm:bottom-7 sm:right-7">
+    <div className="fixed bottom-4 right-4 z-120 sm:bottom-7 sm:right-7">
       <div
         className={`pointer-events-none absolute bottom-0 right-0 transition duration-300 ${
           isOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}
       >
-        <div className="pointer-events-auto flex h-[min(72vh,580px)] w-[min(92vw,380px)] flex-col overflow-hidden rounded-3xl border border-white/15 bg-slate-950/70 shadow-[0_28px_80px_rgba(2,6,23,0.7)] backdrop-blur-xl">
+        <div className="pointer-events-auto flex h-[min(68vh,560px)] w-[min(calc(100vw-2rem),380px)] flex-col overflow-hidden rounded-3xl border border-white/15 bg-slate-950/70 shadow-[0_28px_80px_rgba(2,6,23,0.7)] backdrop-blur-xl">
           <div className="border-b border-white/10 bg-linear-to-r from-cyan-400/10 via-emerald-400/8 to-cyan-400/10 px-4 py-3.5">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-sm font-semibold text-white">The DevSpark AI</p>
-                <p className="text-xs text-slate-300">Smart assistant • replies in seconds</p>
+            <p className="text-sm font-semibold text-white">AI Assistant</p>
+            <p className="text-xs text-slate-300">Chatbots · Automation · Project help</p>
               </div>
               <button
                 type="button"

@@ -1,34 +1,35 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import ImageShowcase from "@/components/ImageShowcase";
-import ServicesShowcase from "@/components/ServicesShowcase";
-import LatestProjectsShowcase from "@/components/LatestProjectsShowcase";
-import WorkExperience from "@/components/WorkExperience";
-import Testimonials from "@/components/Testimonials";
-import Blog from "@/components/Blog";
-import AvailabilityCard from "@/components/AvailabilityCard";
-import DesignProcess from "@/components/DesignProcess";
 import Footer from "@/components/Footer";
-import StartupLoader from "@/components/StartupLoader";
-import CompanyShowcase from "@/components/CompanyShowcase";
+
+const CompanyShowcase = dynamic(() => import("@/components/CompanyShowcase"));
+const ImageShowcase = dynamic(() => import("@/components/ImageShowcase"));
+const ServicesShowcase = dynamic(() => import("@/components/ServicesShowcase"));
+const AiCapabilities = dynamic(() => import("@/components/AiCapabilities"));
+const CaseStudies = dynamic(() => import("@/components/CaseStudies"));
+const WorkExperience = dynamic(() => import("@/components/WorkExperience"));
+const DesignProcess = dynamic(() => import("@/components/DesignProcess"));
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const FiverrOrder = dynamic(() => import("@/components/FiverrOrder"));
+const AvailabilityCard = dynamic(() => import("@/components/AvailabilityCard"));
 
 export default function Home() {
   return (
-    <StartupLoader>
-      <main className="relative overflow-x-hidden bg-slate-950">
-        <Hero />
-        <CompanyShowcase />
-        <About />
-        <ImageShowcase />
-        <ServicesShowcase />
-        <LatestProjectsShowcase />
-        <WorkExperience />
-        <DesignProcess />
-        <Testimonials />
-        <Blog />
-        <AvailabilityCard />
-        <Footer />
-      </main>
-    </StartupLoader>
+    <main className="relative bg-slate-950">
+      <Hero />
+      <CompanyShowcase />
+      <About />
+      <ImageShowcase />
+      <ServicesShowcase />
+      <AiCapabilities />
+      <CaseStudies />
+      <WorkExperience />
+      <DesignProcess />
+      <Testimonials />
+      <FiverrOrder />
+      <AvailabilityCard />
+      <Footer />
+    </main>
   );
 }

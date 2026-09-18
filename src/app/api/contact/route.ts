@@ -8,7 +8,7 @@ type ContactPayload = {
   message?: string;
 };
 
-const DEFAULT_RECIPIENT = "touseefbashir919@gmail.com";
+const DEFAULT_RECIPIENT = "thedevspark@gmail.com";
 
 export async function POST(request: Request) {
   try {

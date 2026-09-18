@@ -23,8 +23,8 @@ const articles = [
 
 export default function Blog() {
   return (
-    <section id="blog" data-scroll-section className="site-container section-space">
-      <div data-scroll /* data-scroll-speed="0.45" */ className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+    <section id="blog" className="site-container section-space">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <p className="mb-3 text-xs uppercase tracking-[0.26em] text-fuchsia-300 sm:mb-4 sm:text-sm sm:tracking-[0.3em]">
             Blog
@@ -50,8 +50,6 @@ export default function Blog() {
         {articles.map((article) => (
           <article
             key={article.title}
-            data-scroll
-            // data-scroll-speed="0.85"
             className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:border-white/20 hover:bg-white/8 sm:rounded-[1.75rem] sm:p-6"
           >
             <div className="text-xs uppercase tracking-[0.3em] text-slate-400">{article.date}</div>

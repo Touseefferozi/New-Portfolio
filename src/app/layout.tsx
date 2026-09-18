@@ -13,8 +13,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Toseef Ferozi | 3D Portfolio",
-  description: "A full animated and smooth scrolling 3D portfolio built with React and Next.js.",
+  title: {
+    default: "Toseef Ferozi | Full-Stack Developer & Web Design Case Studies",
+    template: "%s | Toseef Ferozi",
+  },
+  description:
+    "Full-stack developer specializing in SEO-friendly websites, corporate platforms, and product UI — featuring case studies like HNYDC Global and BW Digit.",
+  keywords: [
+    "full stack developer",
+    "web design case studies",
+    "Next.js developer",
+    "corporate website design",
+    "SaaS website development",
+    "Toseef Ferozi",
+  ],
 };
 
 export default function RootLayout({

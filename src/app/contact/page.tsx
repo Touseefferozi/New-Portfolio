@@ -4,13 +4,13 @@ import RouteTransitionLink from "@/components/RouteTransitionLink";
 const contactChannels = [
   {
     label: "Email",
-    value: "contact@thedevspark.com",
-    href: "mailto:contact@thedevspark.com",
+    value: "thedevspark@gmail.com",
+    href: "mailto:thedevspark@gmail.com",
   },
   {
     label: "Phone",
     value: "+92-3453360450",
-    href: "tel:+92-3453360450",
+    href: "tel:+923453360450",
   },
   {
     label: "Location",
@@ -42,7 +42,7 @@ export default function ContactPage() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end">
             <div>
               <p className="text-xs uppercase tracking-[0.32em] text-emerald-300 sm:text-sm">Contact Us</p>
-              <h1 className="mt-4 text-[clamp(2.6rem,6vw,5.8rem)] font-black leading-[0.95] text-white">
+              <h1 className="mt-4 text-[clamp(2rem,9vw,5.8rem)] font-black leading-[1.02] text-white sm:leading-[0.95]">
                 Let’s build something people remember.
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg sm:leading-9">
@@ -51,18 +51,18 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="grid gap-4 rounded-4xl border border-white/10 bg-white/5 p-5 backdrop-blur sm:grid-cols-3 lg:grid-cols-1 lg:p-6">
+            <div className="grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur sm:grid-cols-3 sm:rounded-4xl sm:p-5 lg:grid-cols-1 lg:p-6">
               <div>
                 <div className="text-xs uppercase tracking-[0.28em] text-slate-500">Availability</div>
-                <div className="mt-2 text-2xl font-semibold text-white">Open for work</div>
+                <div className="mt-2 text-xl font-semibold text-white sm:text-2xl">Open for work</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-[0.28em] text-slate-500">Turnaround</div>
-                <div className="mt-2 text-2xl font-semibold text-white">Fast & clear</div>
+                <div className="mt-2 text-xl font-semibold text-white sm:text-2xl">Fast & clear</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-[0.28em] text-slate-500">Focus</div>
-                <div className="mt-2 text-2xl font-semibold text-white">Design + Code</div>
+                <div className="mt-2 text-xl font-semibold text-white sm:text-2xl">Design + Code</div>
               </div>
             </div>
           </div>

@@ -38,15 +38,15 @@ const techStack = [
 
 export default function ImageShowcase() {
   return (
-    <section id="images" data-scroll-section className="site-container section-space">
+    <section id="images" className="site-container section-space">
       <div className="relative">
-        <div className="image-showcase-name image-showcase-name--ambient" aria-hidden="true" data-scroll /* data-scroll-speed="-1.2" */>
+        <div className="image-showcase-name image-showcase-name--ambient" aria-hidden="true">
           <span className="image-showcase-name__blur">Toseef F</span>
           <span className="image-showcase-name__main">Toseef F</span>
           <span className="image-showcase-name__dots" />
         </div>
 
-        <article className="group relative z-10 mx-auto w-full max-w-6xl overflow-hidden" data-scroll /* data-scroll-speed="0.6" */>
+        <article className="group relative z-10 mx-auto w-full max-w-6xl overflow-hidden">
         <div className="relative w-full h-80 overflow-hidden rounded-lg bg-slate-950/70 sm:h-104 lg:h-128">
           <Image
             src={personalPhoto}
@@ -62,17 +62,17 @@ export default function ImageShowcase() {
 
       <div className="mt-10 sm:mt-14">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,32rem)_minmax(0,1fr)] lg:gap-12">
-          <div className="relative mx-auto h-80 w-full max-w-88 sm:h-88 sm:max-w-116 lg:mx-0 lg:h-88 lg:max-w-lg" data-scroll /* data-scroll-speed="0.9" */>
+          <div className="relative mx-auto h-80 w-full max-w-88 sm:h-88 sm:max-w-116 lg:mx-0 lg:h-88 lg:max-w-lg">
             <div className="absolute inset-x-0 bottom-2 h-px bg-linear-to-r from-emerald-300/50 via-cyan-300/60 to-fuchsia-300/45" />
 
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
                 className={`absolute ${tech.position}`}
-                initial={{ y: -220, opacity: 0, scale: 0.9 }}
+                initial={{ y: -48, opacity: 0, scale: 0.96 }}
                 whileInView={{ y: 0, opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.75, ease: "easeOut", delay: index * 0.08 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.05 }}
               >
                 <span
                   className={`inline-flex rounded-full border border-white/45 bg-slate-950 px-4 py-2 text-sm font-medium text-white shadow-[0_10px_30px_rgba(2,6,23,0.7)] sm:px-5 sm:py-2.5 sm:text-xl ${tech.angle}`}
@@ -83,7 +83,7 @@ export default function ImageShowcase() {
             ))}
           </div>
                 
-          <div className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-3xl" data-scroll /* data-scroll-speed="0.45" */>
+          <div className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-3xl">
             <h3 className="text-3xl font-black leading-[1.05] text-white sm:text-4xl lg:text-6xl">My Advantage</h3>
             <p className="mt-4 max-w-xl text-base leading-8 text-slate-400 sm:text-lg sm:leading-9">
               From custom e-commerce stores to business websites, I use modern technologies and reliable web
@@ -93,10 +93,10 @@ export default function ImageShowcase() {
         </div>
 
         <div className="advantage-wave mt-10 sm:mt-14" aria-hidden="true">
-          <div className="advantage-wave__line advantage-wave__line--one" />
-          <div className="advantage-wave__line advantage-wave__line--two" />
-          <div className="advantage-wave__line advantage-wave__line--three" />
-          <div className="advantage-wave__glow" />
+          <div className="advantage-wave__line advantage-wave__line--one" style={{ animation: "none" }} />
+          <div className="advantage-wave__line advantage-wave__line--two" style={{ animation: "none" }} />
+          <div className="advantage-wave__line advantage-wave__line--three" style={{ animation: "none" }} />
+          <div className="advantage-wave__glow" style={{ animation: "none" }} />
         </div>
       </div>
     </section>

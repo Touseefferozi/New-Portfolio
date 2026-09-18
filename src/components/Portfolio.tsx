@@ -12,8 +12,6 @@ function ProjectCard({ project }: { project: (typeof portfolioProjects)[number] 
   return (
     <Link
       href={`/portfolio/${project.slug}`}
-      data-scroll
-      // data-scroll-speed={cardParallaxSpeed}
       className="group block rounded-3xl transition duration-300 ease-out hover:-translate-y-1"
     >
       <motion.article
@@ -33,10 +31,10 @@ function ProjectCard({ project }: { project: (typeof portfolioProjects)[number] 
           />
 
           <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-slate-950/35 via-transparent to-transparent" />
-          <div className="absolute left-4 top-4 rounded-full border border-emerald-300/30 bg-slate-950/55 px-3 py-1 text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-emerald-100 backdrop-blur-sm">
+          <div className="absolute left-3 top-3 max-w-[46%] truncate rounded-full border border-emerald-300/30 bg-slate-950/55 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-emerald-100 backdrop-blur-sm sm:left-4 sm:top-4 sm:max-w-none sm:px-3 sm:text-[0.64rem]">
             {project.category}
           </div>
-          <div className="absolute right-4 top-4 rounded-full border border-white/10 bg-slate-950/45 px-2.5 py-1 text-[0.62rem] uppercase tracking-[0.15em] text-slate-300 backdrop-blur-sm">
+          <div className="absolute right-3 top-3 max-w-[42%] truncate rounded-full border border-white/10 bg-slate-950/45 px-2 py-1 text-[0.58rem] uppercase tracking-[0.12em] text-slate-300 backdrop-blur-sm sm:right-4 sm:top-4 sm:max-w-[40%] sm:px-2.5 sm:text-[0.62rem]">
             {project.website}
           </div>
         </div>
@@ -44,12 +42,12 @@ function ProjectCard({ project }: { project: (typeof portfolioProjects)[number] 
         <div className="relative z-10 px-4 pb-5 pt-4 text-left sm:px-5 sm:pb-6">
           <h3 className="text-lg font-bold text-white sm:text-xl">{project.title}</h3>
           <p className="mt-2 truncate text-sm text-slate-300">{project.description}</p>
-          <div className="mt-4 flex items-center justify-between gap-3">
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs uppercase tracking-[0.14em] text-slate-400">
               {project.stack} • {project.year}
             </p>
-            <span className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white transition duration-300 hover:border-emerald-300/45 hover:bg-emerald-300/10">
-              View Project
+            <span className="inline-flex w-fit items-center gap-1 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white transition duration-300 hover:border-emerald-300/45 hover:bg-emerald-300/10">
+              View Case Study
               <span aria-hidden="true">↗</span>
             </span>
           </div>
@@ -61,11 +59,11 @@ function ProjectCard({ project }: { project: (typeof portfolioProjects)[number] 
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" data-scroll-section className="site-container section-space">
+    <section id="portfolio" aria-labelledby="portfolio-heading" className="site-container section-space">
       <AnimatedSectionHeading
-        label="Portfolio"
-        title="Featured Portfolio Projects – High-Quality Web Design & Development Case Studies"
-        description="Explore real-world projects across web apps, business websites, and creative platforms."
+        label="Case Studies"
+        title="Web Design & Development Case Studies"
+        description="In-depth project stories covering challenge, approach, and results across corporate websites, SaaS products, and digital platforms."
         className="mb-8 rounded-4xl border border-white/10 bg-slate-950/55 p-5 backdrop-blur sm:mb-10 sm:p-7 lg:p-8"
       />
 

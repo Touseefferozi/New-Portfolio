@@ -1,40 +1,100 @@
-"use client"
-import React from 'react'
-import { motion, useAnimation } from 'framer-motion'
+"use client";
 
-const tech = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Tailwind',
-  'Framer Motion',
-  'Git',
-  'Figma',
-  'Node.js',
-  'GraphQL',
-  'Vercel',
-]
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+type TechItem = {
+  name: string;
+  icon: string;
+  invert?: boolean;
+};
+
+const tech: TechItem[] = [
+  {
+    name: "React",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+  },
+  {
+    name: "Next.js",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    invert: true,
+  },
+  {
+    name: "TypeScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+  },
+  {
+    name: "Tailwind",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+  },
+  {
+    name: "Framer Motion",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+    invert: true,
+  },
+  {
+    name: "Git",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+  },
+  {
+    name: "Figma",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+  },
+  {
+    name: "Node.js",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "GraphQL",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
+  },
+  {
+    name: "Vercel",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
+    invert: true,
+  },
+  {
+    name: "PHP",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
+  },
+  {
+    name: "Laravel",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
+  },
+  {
+    name: "MySQL",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+  },
+];
 
 export default function SkillsMarquee() {
-  const controls = useAnimation()
-
   return (
-    <div className="overflow-hidden py-6 rounded-2xl bg-gradient-to-r from-[#071014] to-transparent border border-neutral-800">
+    <div className="overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-r from-[#071014] to-transparent py-4 sm:py-6">
       <motion.div
-        className="flex gap-8 items-center"
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{ repeat: Infinity, ease: 'linear', duration: 20 }}
+        className="flex items-center gap-4 sm:gap-8"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ repeat: Infinity, ease: "linear", duration: 28 }}
       >
-        {[...tech, ...tech].map((t, i) => (
+        {[...tech, ...tech].map(({ name, icon, invert }, i) => (
           <div
-            key={t + i}
-            className="px-4 py-2 rounded-xl bg-[#081312] border border-neutral-800 text-slate-200 text-sm flex items-center gap-3 shadow-sm"
+            key={`${name}-${i}`}
+            className="flex shrink-0 items-center gap-2.5 rounded-xl border border-neutral-800 bg-[#081312] px-3 py-2 text-xs text-slate-200 shadow-sm sm:gap-3 sm:px-4 sm:text-sm"
           >
-            <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#002f1a] to-[#003b22] flex items-center justify-center text-sm font-semibold text-[#7CFFB2]">{t[0]}</span>
-            <span className="font-medium">{t}</span>
+            <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-[#0c1a18] sm:h-8 sm:w-8">
+              <Image
+                src={icon}
+                alt=""
+                width={18}
+                height={18}
+                className={`object-contain ${invert ? "brightness-0 invert" : ""}`}
+                unoptimized
+              />
+            </span>
+            <span className="whitespace-nowrap font-medium">{name}</span>
           </div>
         ))}
       </motion.div>
     </div>
-  )
+  );
 }

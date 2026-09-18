@@ -16,6 +16,8 @@ const INITIAL_FORM: ContactFormState = {
   message: "",
 };
 
+const CONTACT_EMAIL = "thedevspark@gmail.com";
+
 export default function Contact() {
   const [form, setForm] = useState<ContactFormState>(INITIAL_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,20 +29,29 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          subject: form.subject.trim(),
+          message: form.message.trim(),
+          _subject: `Portfolio Inquiry: ${form.subject.trim()}`,
+          _template: "table",
+          _captcha: "false",
+        }),
       });
 
-      const result = (await response.json()) as { error?: string };
+      const result = (await response.json()) as { success?: string | boolean; message?: string };
 
       if (!response.ok) {
         setStatus({
           type: "error",
-          text: result.error ?? "Message send nahi ho saka. Dobara try karein.",
+          text: result.message ?? "Message send nahi ho saka. Dobara try karein.",
         });
         return;
       }
@@ -63,7 +74,7 @@ export default function Contact() {
   return (
     <section id="contact" className="site-container section-space">
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-10">
-        <div data-scroll /* data-scroll-speed="0.6" */>
+        <div>
           <p className="mb-3 text-xs uppercase tracking-[0.26em] text-emerald-300 sm:mb-4 sm:text-sm sm:tracking-[0.3em]">
             Contact
           </p>
@@ -71,20 +82,19 @@ export default function Contact() {
             Let’s create something unforgettable.
           </h2>
           <p className="mt-5 max-w-xl text-sm leading-7 text-slate-300 sm:mt-6 sm:text-base sm:leading-8 lg:text-lg">
-            If you want a sleek 3D portfolio, a new personal brand site, or a
+            If you want a sleek portfolio, a new personal brand site, or a
             polished product landing page, I’m ready to help.
           </p>
         </div>
 
         <form
-          data-scroll
-          // data-scroll-speed="1"
           onSubmit={handleSubmit}
-          className="rounded-4xl border border-white/10 bg-white/5 p-6 shadow-[0_0_50px_rgba(16,185,129,0.08)] backdrop-blur sm:p-8"
+          className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-[0_0_50px_rgba(16,185,129,0.08)] backdrop-blur sm:rounded-4xl sm:p-8"
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <input
               type="text"
+              name="name"
               value={form.name}
               onChange={(event) => setForm((previous) => ({ ...previous, name: event.target.value }))}
               required
@@ -93,6 +103,7 @@ export default function Contact() {
             />
             <input
               type="email"
+              name="email"
               value={form.email}
               onChange={(event) => setForm((previous) => ({ ...previous, email: event.target.value }))}
               required
@@ -102,6 +113,7 @@ export default function Contact() {
           </div>
           <input
             type="text"
+            name="subject"
             value={form.subject}
             onChange={(event) => setForm((previous) => ({ ...previous, subject: event.target.value }))}
             required
@@ -109,6 +121,7 @@ export default function Contact() {
             placeholder="Project subject"
           />
           <textarea
+            name="message"
             rows={6}
             value={form.message}
             onChange={(event) => setForm((previous) => ({ ...previous, message: event.target.value }))}

@@ -13,10 +13,12 @@ const steps = [
 export default function ProcessCards() {
   return (
     <div>
-      <h3 className="text-3xl font-bold">Design Process</h3>
-      <p className="mt-3 text-slate-300 max-w-2xl">A dependable, repeatable process for building product-quality interfaces.</p>
+      <h3 className="text-2xl font-bold sm:text-3xl">Design Process</h3>
+      <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
+        A dependable, repeatable process for building product-quality interfaces.
+      </p>
 
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-5">
         {steps.map((s, i) => (
           <motion.div
             key={s.title}
@@ -25,14 +27,14 @@ export default function ProcessCards() {
             whileHover={{ scale: 1.03 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.06 }}
-            className="p-6 rounded-2xl bg-[#071014] border border-neutral-800 shadow-sm hover:shadow-[0_12px_40px_rgba(0,255,122,0.06)]"
+            className="rounded-2xl border border-neutral-800 bg-[#071014] p-5 shadow-sm hover:shadow-[0_12px_40px_rgba(0,255,122,0.06)] sm:p-6"
           >
-            <div className="text-[#7CFFB2] font-semibold text-sm">0{i + 1}</div>
-            <h4 className="mt-3 font-bold text-lg">{s.title}</h4>
+            <div className="text-sm font-semibold text-[#7CFFB2]">0{i + 1}</div>
+            <h4 className="mt-3 text-lg font-bold">{s.title}</h4>
             <p className="mt-2 text-sm text-slate-300">{s.desc}</p>
           </motion.div>
         ))}
       </div>
     </div>
-  )
+  );
 }
